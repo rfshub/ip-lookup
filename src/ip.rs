@@ -6,6 +6,7 @@ use std::time::Duration;
 pub fn get_public_ip_addr() -> Option<String> {
     let sources = vec![
         ("https://icanhazip.com/", false), // plain text
+        ("https://api.ip.sb/ip", false), // plain text
         ("https://api.ipsimple.org/ipv4?format=json", true), // json {"ip": ...}
         ("https://api.ipify.org/?format=json", true), // json {"ip": ...}
     ];

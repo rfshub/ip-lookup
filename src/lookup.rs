@@ -187,31 +187,6 @@ pub fn lookup_with_apipcc() -> Option<LookupResult> {
     })
 }
 
-pub fn lookup_with_ipapico() -> Option<LookupResult> {
-    let url = "https://ipapi.co/json";
-    let resp = reqwest::blocking::get(url).ok()?.json::<serde_json::Value>().ok()?;
-
-    Some(LookupResult {
-        country: CountryInfo {
-            city: resp.get("city").and_then(|v| v.as_str()).map(String::from),
-            code: resp.get("country_code").and_then(|v| v.as_str()).map(String::from),
-            zip: resp.get("postal").and_then(|v| v.as_str()).map(String::from),
-            timezone: resp.get("timezone").and_then(|v| v.as_str()).map(String::from),
-        },
-        location: LocationInfo {
-            latitude: resp.get("latitude").and_then(|v| v.as_f64()),
-            longitude: resp.get("longitude").and_then(|v| v.as_f64()),
-        },
-        connection: ConnectionInfo::default(),
-        network: NetworkInfo {
-            ip: resp.get("ip").and_then(|v| v.as_str()).map(String::from),
-            isp: None,
-            org: resp.get("org").and_then(|v| v.as_str()).map(String::from),
-            asn: resp.get("asn").and_then(|v| v.as_str()).map(String::from),
-        },
-    })
-}
-
 pub fn lookup_with_ipapiis() -> Option<LookupResult> {
     let url = "https://api.ipapi.is";
     let resp = reqwest::blocking::get(url).ok()?.json::<serde_json::Value>().ok()?;
