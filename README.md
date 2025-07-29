@@ -2,7 +2,6 @@
 
 A unified IP geolocation query library using multiple free public providers.
 
-[![Crates.io](https://img.shields.io/crates/v/ip-lookup.svg)](https://crates.io/crates/ip-lookup)
 [![Documentation](https://docs.rs/ip-lookup/badge.svg)](https://docs.rs/ip-lookup)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
